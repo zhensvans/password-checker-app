@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhenya's Password Checker</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue",sans-serif;
+            background-color: lavender;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #1E9112;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 50px;
+        }
+        form {
+            width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="password"] {
+            width: calc(100% - 10px);
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 18px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #990099;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #1E9112;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #1E9112;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: ButtonBorder;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Zhenya's Password Checker</h1>
+        <form action="/check_password" method="post">
+            <label for="password">Enter your password:</label><br>
+            <input type="password" id="password" name="password" autocomplete="off" required>
+            <br><br>
+            <input type="submit" value="Check Password">
+        </form>
+        <a href="/generate_password">Generate New Password</a>
+    </div>
+    <div id="password-suggestions">
+        {% if suggestions %}
+            <h2>Password Suggestions:</h2>
+            <ul>
+                {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>
