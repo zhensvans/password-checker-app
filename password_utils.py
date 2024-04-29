@@ -60,21 +60,3 @@ def generate_password(length=12):
     num_bytes = (length * 3 + 3) // 4  # Convert length to bytes (base64 encoding)
     password = secrets.token_urlsafe(num_bytes)
     return password[:length]  # Truncate to desired length
-
-
-def get_password_suggestions(password):
-    suggestions = []
-
-    if not any(char.islower() for char in password):
-        suggestions.append("Include at least one lowercase letter.")
-
-    if not any(char.isupper() for char in password):
-        suggestions.append("Include at least one uppercase letter.")
-
-    if not any(char.isdigit() for char in password):
-        suggestions.append("Include at least one digit.")
-
-    if not any(char in string.punctuation for char in password):
-        suggestions.append("Include at least one special character (e.g., @$!%*?&).")
-
-    return suggestions

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
-from password_utils import (analyze_password, calculate_entropy, get_password_suggestions,
-                            generate_password, is_password_breached, get_breached_count,
-                            get_password_strength)
+from password_utils import (analyze_password, calculate_entropy,generate_password,
+                            is_password_breached, get_breached_count, get_password_strength)
 
 app = Flask(__name__)
 
