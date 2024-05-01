@@ -30,6 +30,10 @@ Password-checker-app is a simple web application built to help users assess the 
 
 6. Run the Flask application using the `flask run` command: `flask run`
 
+## Database Implementation
+
+The application uses SQLite as its database to store breached passwords and their breach counts. The `database.py` module handles database creation, table creation, data insertion, and querying. The database is initialized on application startup and populated with breached password data fetched from an external API.
+
 ## Usage
 
 - Enter your password on the main page for analysis.

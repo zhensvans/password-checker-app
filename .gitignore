@@ -2,3 +2,4 @@
 __pycache__/
 .venv/
 .idea/
+data/breached_passwords.db

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Zhenya's Password Checker</title>
     <style>
         body {
@@ -41,6 +42,14 @@
             border-radius: 3px;
             font-size: 18px;
         }
+          input[type="text"] {
+            width: calc(100% - 30px);
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 18px;
+        }
         input[type="submit"] {
             width: 100%;
             padding: 15px;
@@ -55,6 +64,18 @@
         input[type="submit"]:hover {
             background-color: #1E9112;
         }
+        .form{
+            position: relative;
+        }
+        .img{
+            position: absolute;
+            top: 33%;
+            right: 10%;
+            z-index: 1;
+            cursor: pointer;
+            display: flex;
+            visibility: visible;
+        }
         a {
             display: block;
             text-align: center;
@@ -65,14 +86,18 @@
         a:hover {
             text-decoration: ButtonBorder;
         }
+        .acc{
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Zhenya's Password Checker</h1>
-        <form action="/check_password" method="post">
+        <form action="/check_password" method="post" class="form">
             <label for="password">Enter your password:</label><br>
             <input type="password" id="password" name="password" autocomplete="off" required>
+            <i id="eye-icon" class="fas fa-eye-slash img" onclick="togglePasswordVisibility();"></i>
             <br><br>
             <input type="submit" value="Check Password">
         </form>
@@ -89,7 +114,19 @@
         {% endif %}
     </div>
     <script>
-
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+            const eyeIcon = document.getElementById("eye-icon");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
 from password_utils import (analyze_password, calculate_entropy,generate_password,
                             is_password_breached, get_breached_count, get_password_strength)
+import data.database
+import schedule
+import time
+
 
 app = Flask(__name__)
 
@@ -17,7 +21,7 @@ def check_password():
     entropy = calculate_entropy(password)
     strength = get_password_strength(entropy)
     is_breached = is_password_breached(password)
-    count=get_breached_count(password)
+    count= get_breached_count(password)
     return render_template(
         'result.html',
         has_uppercase=has_uppercase,
@@ -42,5 +46,8 @@ def generate_new_password():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    # app.run(debug=True, ssl_context=('localhost.crt', 'localhost.key'))
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+        app.run(debug=True)
+        # app.run(debug=True, ssl_context=('localhost.crt', 'localhost.key'))
